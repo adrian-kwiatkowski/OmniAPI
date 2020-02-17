@@ -74,7 +74,7 @@ class SearchResultsViewController: UIViewController {
     
     private func showArticles() {
         viewModel.articles.bind(to: mainView.tableView.rx.items(cellIdentifier: "ArticleCell", cellType: ArticleCell.self)) { (row, article, cell) in
-            cell.textLabel?.text = article.title
+            cell.textLabel?.text = article.title.value
         }.disposed(by: disposeBag)
     }
     
