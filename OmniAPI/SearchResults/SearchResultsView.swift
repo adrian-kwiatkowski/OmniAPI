@@ -7,6 +7,7 @@ class SearchResultsView: UIView {
     let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.searchBarStyle = .minimal
+        view.placeholder = "Query"
         return view
     }()
     

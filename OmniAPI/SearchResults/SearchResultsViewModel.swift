@@ -25,6 +25,7 @@ struct SearchResultsViewModel {
                         self.articles.accept(welcome.articles)
                     } catch {
                         print(error.localizedDescription)
+                        print(response)
                     }
                 } else {
                     // TODO: - delegate with display alert on ViewController here

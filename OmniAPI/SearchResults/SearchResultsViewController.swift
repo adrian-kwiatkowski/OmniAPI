@@ -36,10 +36,7 @@ class SearchResultsViewController: UIViewController {
         title = "Omni API"
         view.backgroundColor = .white
         view.addSubview(mainView)
-        setupConstraints()
-    }
-    
-    private func setupConstraints() {
+        
         mainView.snp.makeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
@@ -56,19 +53,34 @@ class SearchResultsViewController: UIViewController {
                 self.showTopics()
             }
         }).disposed(by: disposeBag)
+        
+        mainView.tableView.rx.itemSelected
+            .subscribe(onNext:  { value in
+                print("Tapped cell: \(value)")
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.searchBar.rx.text.orEmpty
+            .asDriver()
+            .throttle(.milliseconds(300))
+            .distinctUntilChanged()
+            .drive(onNext: {
+                if $0.count >= 3 {
+                    self.viewModel.getSearchResults($0)
+                }
+            }).disposed(by: disposeBag)
+        
     }
     
     private func showArticles() {
-        viewModel.articles.bind(to: mainView.tableView.rx.items(cellIdentifier: "ArticleCell", cellType: ArticleCell.self)) { (row, element, cell) in
-            cell.textLabel?.text = element.title.value
-            
+        viewModel.articles.bind(to: mainView.tableView.rx.items(cellIdentifier: "ArticleCell", cellType: ArticleCell.self)) { (row, article, cell) in
+            cell.textLabel?.text = article.title
         }.disposed(by: disposeBag)
     }
     
     private func showTopics() {
-        viewModel.topics.bind(to: mainView.tableView.rx.items(cellIdentifier: "TopicCell", cellType: TopicCell.self)) { (row, element, cell) in
-            cell.textLabel?.text = element.title
-            
+        viewModel.topics.bind(to: mainView.tableView.rx.items(cellIdentifier: "TopicCell", cellType: TopicCell.self)) { (row, topic, cell) in
+            cell.textLabel?.text = topic.title
         }.disposed(by: disposeBag)
     }
 }
