@@ -6,5 +6,5 @@ target 'OmniAPI' do
   use_frameworks!
 
   # Pods for OmniAPI
-  pod "PromiseKit", "~> 6.8"
+  pod "SnapKit"
 end
