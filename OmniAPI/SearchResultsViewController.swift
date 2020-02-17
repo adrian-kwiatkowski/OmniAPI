@@ -1,25 +1,24 @@
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class SearchResultsViewController: UIViewController {
     
-    let searchBar: UISearchBar = {
-        let view = UISearchBar()
-        return view
-    }()
+    // MARK: - PRIVATE PROPERTIES
     
-    let tableView: UITableView = {
-        let view = UITableView()
-        return view
-    }()
+    private let mainView: SearchResultsView
+    private let viewModel: SearchResultsViewModel
+    private let disposeBag = DisposeBag()
     
     // MARK: - INIT
     
-    init() {
+    init(viewModel: SearchResultsViewModel = SearchResultsViewModel()) {
+        self.viewModel = viewModel
+        self.mainView = SearchResultsView()
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        configureDataSource()
-        fetchData()
+        bindUI()
     }
     
     required init?(coder: NSCoder) {
@@ -29,55 +28,22 @@ class SearchResultsViewController: UIViewController {
     // MARK: - PRIVATE METHODS
     
     private func setupUI() {
-        view.addSubview(searchBar)
-        view.addSubview(tableView)
+        view.backgroundColor = .white
+        view.addSubview(mainView)
         setupConstraints()
     }
     
     private func setupConstraints() {
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.equalToSuperview()
-        }
-        
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+        mainView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalToSuperview()
         }
     }
     
-    private func configureDataSource() {
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: "ArticleCell")
-        tableView.register(TopicCell.self, forCellReuseIdentifier: "TopicCell")
-    }
-}
-
-// MARK: - Networking
-extension SearchResultsViewController {
-    
-    func fetchData() {
-        guard let url = URL(string: "https://omni-content.omni.news/search?query=stockholm") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) {
-            data, response, error in
+    private func bindUI() {
+        viewModel.articles.bind(to: mainView.tableView.rx.items(cellIdentifier: "ArticleCell", cellType: ArticleCell.self)) { (row, element, cell) in
+                cell.textLabel?.text = "article: \(element.title.value)"
             
-            DispatchQueue.main.async {
-                if let data = data {
-                    do {
-                        let welcome = try JSONDecoder().decode(Welcome.self, from: data)
-                        print(welcome.articles.count, welcome.topics.count)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                } else {
-                    // TODO: - display native ios alert here
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                }
-            }
-        }
+        }.disposed(by: disposeBag)
         
-        task.resume()
     }
 }
