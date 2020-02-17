@@ -6,6 +6,7 @@ class SearchResultsView: UIView {
     
     let searchBar: UISearchBar = {
         let view = UISearchBar()
+        view.searchBarStyle = .minimal
         return view
     }()
     
@@ -50,12 +51,13 @@ class SearchResultsView: UIView {
         }
         
         segmentedControl.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(searchBar.snp.bottom).offset(6.0)
+            $0.leading.equalToSuperview().offset(20.0)
+            $0.trailing.equalToSuperview().offset(-20.0)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.0)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
