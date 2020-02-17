@@ -131,17 +131,9 @@
 		DA80233123FB0B86001DA3CB /* OmniAPI */ = {
 			isa = PBXGroup;
 			children = (
-				DA80233223FB0B86001DA3CB /* AppDelegate.swift */,
-				DA80233423FB0B86001DA3CB /* SceneDelegate.swift */,
-				DA80233623FB0B86001DA3CB /* SearchResultsViewController.swift */,
-				DAD70D5123FB2B6400913278 /* SearchResultsViewModel.swift */,
-				DAD70D5323FB3F0200913278 /* SearchResultsView.swift */,
-				DAD70D4D23FB26EB00913278 /* ArticleCell.swift */,
-				DAD70D4F23FB26FA00913278 /* TopicCell.swift */,
-				DAD70D4A23FB14A600913278 /* Model.swift */,
-				DA80233B23FB0B87001DA3CB /* Assets.xcassets */,
-				DA80233D23FB0B87001DA3CB /* LaunchScreen.storyboard */,
-				DA80234023FB0B87001DA3CB /* Info.plist */,
+				DAD70D5723FB415300913278 /* Common */,
+				DAD70D5623FB413200913278 /* SearchResults */,
+				DAD70D5523FB411F00913278 /* Model */,
 			);
 			path = OmniAPI;
 			sourceTree = "<group>";
@@ -162,6 +154,38 @@
 				DA80235623FB0B87001DA3CB /* Info.plist */,
 			);
 			path = OmniAPIUITests;
+			sourceTree = "<group>";
+		};
+		DAD70D5523FB411F00913278 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAD70D4A23FB14A600913278 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DAD70D5623FB413200913278 /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				DAD70D5323FB3F0200913278 /* SearchResultsView.swift */,
+				DA80233623FB0B86001DA3CB /* SearchResultsViewController.swift */,
+				DAD70D5123FB2B6400913278 /* SearchResultsViewModel.swift */,
+				DAD70D4F23FB26FA00913278 /* TopicCell.swift */,
+				DAD70D4D23FB26EB00913278 /* ArticleCell.swift */,
+			);
+			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		DAD70D5723FB415300913278 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DA80234023FB0B87001DA3CB /* Info.plist */,
+				DA80233D23FB0B87001DA3CB /* LaunchScreen.storyboard */,
+				DA80233223FB0B86001DA3CB /* AppDelegate.swift */,
+				DA80233423FB0B86001DA3CB /* SceneDelegate.swift */,
+				DA80233B23FB0B87001DA3CB /* Assets.xcassets */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -496,6 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -513,7 +539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C63X5Q2KR6;
-				INFOPLIST_FILE = OmniAPI/Info.plist;
+				INFOPLIST_FILE = OmniAPI/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C63X5Q2KR6;
-				INFOPLIST_FILE = OmniAPI/Info.plist;
+				INFOPLIST_FILE = OmniAPI/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
