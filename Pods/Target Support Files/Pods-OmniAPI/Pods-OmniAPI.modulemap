@@ -1,0 +1,6 @@
+framework module Pods_OmniAPI {
+  umbrella header "Pods-OmniAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}

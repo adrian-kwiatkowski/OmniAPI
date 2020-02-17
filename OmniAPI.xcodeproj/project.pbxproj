@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		DA80233F23FB0B87001DA3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA80233D23FB0B87001DA3CB /* LaunchScreen.storyboard */; };
 		DA80234A23FB0B87001DA3CB /* OmniAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80234923FB0B87001DA3CB /* OmniAPITests.swift */; };
 		DA80235523FB0B87001DA3CB /* OmniAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80235423FB0B87001DA3CB /* OmniAPIUITests.swift */; };
+		E7FD1924C5FFF3D17EA77DE7 /* Pods_OmniAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F884C682A409C98B76FBF56 /* Pods-OmniAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.release.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.release.xcconfig"; sourceTree = "<group>"; };
+		3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CC96C13481C1DF3CB8DF1D3 /* Pods-OmniAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.debug.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		DA80232F23FB0B86001DA3CB /* OmniAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80233223FB0B86001DA3CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA80233423FB0B86001DA3CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7FD1924C5FFF3D17EA77DE7 /* Pods_OmniAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772C7522979AE00648E983B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CC96C13481C1DF3CB8DF1D3 /* Pods-OmniAPI.debug.xcconfig */,
+				2F884C682A409C98B76FBF56 /* Pods-OmniAPI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC035FE75083B9A5D9DADCC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA80232623FB0B86001DA3CB = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,8 @@
 				DA80234823FB0B87001DA3CB /* OmniAPITests */,
 				DA80235323FB0B87001DA3CB /* OmniAPIUITests */,
 				DA80233023FB0B86001DA3CB /* Products */,
+				772C7522979AE00648E983B8 /* Pods */,
+				AC035FE75083B9A5D9DADCC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA80235923FB0B88001DA3CB /* Build configuration list for PBXNativeTarget "OmniAPI" */;
 			buildPhases = (
+				04BDA6620A32083B99C8D497 /* [CP] Check Pods Manifest.lock */,
 				DA80232B23FB0B86001DA3CB /* Sources */,
 				DA80232C23FB0B86001DA3CB /* Frameworks */,
 				DA80232D23FB0B86001DA3CB /* Resources */,
+				0FD807D78ACB610D6C253DF9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +279,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04BDA6620A32083B99C8D497 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OmniAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0FD807D78ACB610D6C253DF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OmniAPI/Pods-OmniAPI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OmniAPI/Pods-OmniAPI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OmniAPI/Pods-OmniAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA80232B23FB0B86001DA3CB /* Sources */ = {
@@ -432,6 +500,7 @@
 		};
 		DA80235A23FB0B88001DA3CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CC96C13481C1DF3CB8DF1D3 /* Pods-OmniAPI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -444,12 +513,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AK.OmniAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DA80235B23FB0B88001DA3CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F884C682A409C98B76FBF56 /* Pods-OmniAPI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,7 +532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AK.OmniAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
