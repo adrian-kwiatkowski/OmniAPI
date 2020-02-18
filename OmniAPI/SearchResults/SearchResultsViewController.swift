@@ -64,7 +64,7 @@ class SearchResultsViewController: UIViewController {
                 let indexPath = IndexPath(row: row, section: 0)
                 
                 if let article = element as? Article, let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? ArticleCell {
-                    cell.textLabel?.text = article.title.value
+                    cell.configure(with: article)
                     return cell
                 } else if let topic = element as? Topic, let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicCell {
                     cell.textLabel?.text = topic.title
