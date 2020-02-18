@@ -40,7 +40,7 @@ class SearchResultsViewController: UIViewController {
     private func bindUI() {
         mainView.segmentedControl.rx.selectedSegmentIndex.subscribe(onNext: { index in
             guard let contentType = SearchResultsViewModel.ContentType.init(rawValue: index) else { return }
-            self.viewModel.contentType.accept(contentType)
+            self.viewModel.changeContentType(contentType)
         }).disposed(by: disposeBag)
         
         mainView.tableView.rx.itemSelected

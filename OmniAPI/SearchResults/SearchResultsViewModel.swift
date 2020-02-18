@@ -9,17 +9,26 @@ struct SearchResultsViewModel {
         case topics = 1
     }
     
-    let searchResults = BehaviorRelay<[SearchResult]>(value: [])
-    let contentType = BehaviorRelay<ContentType>(value: .articles)
+    // MARK: - PRIVATE PROPERTIES
+    
+    private let contentType = BehaviorRelay<ContentType>(value: .articles)
     private let topics = BehaviorRelay<[Topic]>(value: [])
     private let articles = BehaviorRelay<[Article]>(value: [])
     private let disposeBag = DisposeBag()
+    
+    // MARK: - PUBLIC PROPERTIES
+    
+    let searchResults = BehaviorRelay<[SearchResult]>(value: [])
+    
+    // MARK: - INIT
     
     init() {
         bindData()
     }
     
-    func bindData() {
+    // MARK: - PRIVATE METHODS
+    
+    private func bindData() {
         contentType.subscribe(onNext: {
             switch $0 {
             case .articles:
@@ -28,6 +37,12 @@ struct SearchResultsViewModel {
                 self.searchResults.accept(self.topics.value)
             }
         }).disposed(by: disposeBag)
+    }
+    
+    // MARK: - PUBLIC METHODS
+    
+    func changeContentType(_ newContentType: ContentType) {
+        contentType.accept(newContentType)
     }
     
     func getSearchResults(_ query: String) {
