@@ -59,12 +59,20 @@ class SearchResultsViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
-        viewModel.searchResults.bind(to: mainView.tableView.rx.items(cellIdentifier: "SearchResultCell", cellType: SearchResultCell.self)) { (row, element, cell) in
-            if let article = element as? Article {
-                cell.textLabel?.text = article.title.value
-            } else if let topic = element as? Topic {
-                cell.textLabel?.text = topic.title
-            }
-        }.disposed(by: disposeBag)
+        viewModel.searchResults
+            .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
+                let indexPath = IndexPath(row: row, section: 0)
+                
+                if let article = element as? Article, let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? ArticleCell {
+                    cell.textLabel?.text = article.title.value
+                    return cell
+                } else if let topic = element as? Topic, let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicCell {
+                    cell.textLabel?.text = topic.title
+                    return cell
+                }
+                
+                return UITableViewCell()
+        }
+        .disposed(by: disposeBag)
     }
 }

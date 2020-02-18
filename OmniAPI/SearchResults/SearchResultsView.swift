@@ -19,8 +19,9 @@ class SearchResultsView: UIView {
     }()
     
     let tableView: UITableView = {
-        let view = UITableView()
+        let view = UITableView(frame: .zero, style: UITableView.Style.plain)
         view.keyboardDismissMode = .interactive
+        view.separatorStyle = .none
         return view
     }()
     
@@ -64,7 +65,7 @@ class SearchResultsView: UIView {
     }
     
     private func configureDataSource() {
-        tableView.register(SearchResultCell.self, forCellReuseIdentifier: "SearchResultCell")
-        tableView.register(SearchResultCell.self, forCellReuseIdentifier: "SearchResultCell")
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: "ArticleCell")
+        tableView.register(TopicCell.self, forCellReuseIdentifier: "TopicCell")
     }
 }

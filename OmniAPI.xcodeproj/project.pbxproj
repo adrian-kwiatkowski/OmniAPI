@@ -14,8 +14,9 @@
 		DA80233F23FB0B87001DA3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA80233D23FB0B87001DA3CB /* LaunchScreen.storyboard */; };
 		DA80234A23FB0B87001DA3CB /* OmniAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80234923FB0B87001DA3CB /* OmniAPITests.swift */; };
 		DA80235523FB0B87001DA3CB /* OmniAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80235423FB0B87001DA3CB /* OmniAPIUITests.swift */; };
+		DAB130D923FCA402002349A5 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB130D823FCA402002349A5 /* TopicCell.swift */; };
 		DAD70D4B23FB14A600913278 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D4A23FB14A600913278 /* Model.swift */; };
-		DAD70D4E23FB26EB00913278 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D4D23FB26EB00913278 /* SearchResultCell.swift */; };
+		DAD70D4E23FB26EB00913278 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D4D23FB26EB00913278 /* ArticleCell.swift */; };
 		DAD70D5223FB2B6400913278 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D5123FB2B6400913278 /* SearchResultsViewModel.swift */; };
 		DAD70D5423FB3F0200913278 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D5323FB3F0200913278 /* SearchResultsView.swift */; };
 		E7FD1924C5FFF3D17EA77DE7 /* Pods_OmniAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */; };
@@ -55,8 +56,9 @@
 		DA80235023FB0B87001DA3CB /* OmniAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OmniAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80235423FB0B87001DA3CB /* OmniAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniAPIUITests.swift; sourceTree = "<group>"; };
 		DA80235623FB0B87001DA3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAB130D823FCA402002349A5 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		DAD70D4A23FB14A600913278 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		DAD70D4D23FB26EB00913278 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		DAD70D4D23FB26EB00913278 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		DAD70D5123FB2B6400913278 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		DAD70D5323FB3F0200913278 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +170,8 @@
 				DAD70D5323FB3F0200913278 /* SearchResultsView.swift */,
 				DA80233623FB0B86001DA3CB /* SearchResultsViewController.swift */,
 				DAD70D5123FB2B6400913278 /* SearchResultsViewModel.swift */,
-				DAD70D4D23FB26EB00913278 /* SearchResultCell.swift */,
+				DAD70D4D23FB26EB00913278 /* ArticleCell.swift */,
+				DAB130D823FCA402002349A5 /* TopicCell.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -360,11 +363,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA80233723FB0B86001DA3CB /* SearchResultsViewController.swift in Sources */,
+				DAB130D923FCA402002349A5 /* TopicCell.swift in Sources */,
 				DA80233323FB0B86001DA3CB /* AppDelegate.swift in Sources */,
 				DA80233523FB0B86001DA3CB /* SceneDelegate.swift in Sources */,
 				DAD70D5223FB2B6400913278 /* SearchResultsViewModel.swift in Sources */,
 				DAD70D5423FB3F0200913278 /* SearchResultsView.swift in Sources */,
-				DAD70D4E23FB26EB00913278 /* SearchResultCell.swift in Sources */,
+				DAD70D4E23FB26EB00913278 /* ArticleCell.swift in Sources */,
 				DAD70D4B23FB14A600913278 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
