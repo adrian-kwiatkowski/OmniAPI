@@ -55,7 +55,7 @@ class SearchResultsViewController: UIViewController {
             .distinctUntilChanged()
             .drive(onNext: {
                 if $0.count >= 3 {
-                    self.viewModel.getSearchResults($0)
+                    self.viewModel.getSearchResults(for: $0)
                 }
             }).disposed(by: disposeBag)
         

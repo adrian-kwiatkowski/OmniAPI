@@ -1,6 +1,6 @@
-import UIKit
 import RxSwift
 import RxCocoa
+import PromiseKit
 
 struct SearchResultsViewModel {
     
@@ -45,7 +45,33 @@ struct SearchResultsViewModel {
         contentType.accept(newContentType)
     }
     
-    func getSearchResults(_ query: String) {
+    func getSearchResults(for query: String) {
+        fetchResults(query)
+            .done {
+                self.topics.accept($0.topics)
+                self.articles.accept($0.articles)
+                switch self.contentType.value {
+                case .articles:
+                    self.searchResults.accept(self.articles.value)
+                case .topics:
+                    self.searchResults.accept(self.topics.value)
+                }
+        }
+        .catch { error in
+            // TODO: - delegate with display alert on ViewController here
+            print(error.localizedDescription)
+        }
+    }
+}
+
+// MARK: - Networking
+extension SearchResultsViewModel {
+    
+    enum NetworkError: Error {
+        case invalidURL
+    }
+    
+    func fetchResults(_ query: String) -> Promise<Welcome> {
         let escapedString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         // https://omni-content.omni.news/search?query=stockholm
@@ -56,37 +82,15 @@ struct SearchResultsViewModel {
         components.queryItems = [
             URLQueryItem(name: "query", value: escapedString),
         ]
-
-        guard let url = components.url else { return }
         
-        let task = URLSession.shared.dataTask(with: url) {
-            data, response, error in
-            
-            DispatchQueue.main.async {
-                if let data = data {
-                    do {
-                        let welcome = try JSONDecoder().decode(Welcome.self, from: data)
-                        self.topics.accept(welcome.topics)
-                        self.articles.accept(welcome.articles)
-                        switch self.contentType.value {
-                        case .articles:
-                            self.searchResults.accept(self.articles.value)
-                        case .topics:
-                            self.searchResults.accept(self.topics.value)
-                        }
-                    } catch {
-                        // TODO: - delegate with display alert on ViewController here
-                        print(error.localizedDescription)
-                    }
-                } else {
-                    // TODO: - delegate with display alert on ViewController here
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                }
-            }
+        guard let url = components.url else { return Promise(error: NetworkError.invalidURL) }
+        
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: url)
+        }.compactMap {
+            return try JSONDecoder().decode(Welcome.self, from: $0.data)
         }
-        
-        task.resume()
     }
 }
+
+
