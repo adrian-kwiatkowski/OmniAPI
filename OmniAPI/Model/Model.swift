@@ -11,13 +11,13 @@ struct Welcome: Codable {
 // MARK: - Article
 struct Article: Codable, SearchResult {
     let title: Title
-    let mainText: MainText?
-    let mainResource: MainResource?
+    let mainText: MainText
+    let mainResource: MainResource
 
     enum CodingKeys: String, CodingKey {
         case title
-        case mainText
-        case mainResource
+        case mainText = "main_text"
+        case mainResource = "main_resource"
     }
 }
 
@@ -26,7 +26,7 @@ struct MainResource: Codable {
     let imageAsset: ImageAsset
 
     enum CodingKeys: String, CodingKey {
-        case imageAsset
+        case imageAsset = "image_asset"
     }
 }
 
@@ -48,7 +48,7 @@ struct Paragraph: Codable {
 
     enum CodingKeys: String, CodingKey {
         case text
-        case blockType
+        case blockType = "block_type"
     }
 }
 
