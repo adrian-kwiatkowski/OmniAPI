@@ -11,11 +11,6 @@ class SearchResultsViewController: UIViewController {
     private let viewModel: SearchResultsViewModel
     private let disposeBag = DisposeBag()
     
-    private enum Content: Int {
-        case articles = 0
-        case topics = 1
-    }
-    
     // MARK: - INIT
     
     init(viewModel: SearchResultsViewModel = SearchResultsViewModel()) {
@@ -44,14 +39,8 @@ class SearchResultsViewController: UIViewController {
     
     private func bindUI() {
         mainView.segmentedControl.rx.selectedSegmentIndex.subscribe(onNext: { index in
-            guard let content = Content.init(rawValue: index) else { return }
-            self.mainView.tableView.dataSource = nil
-            switch content {
-            case .articles:
-                self.showArticles()
-            case .topics:
-                self.showTopics()
-            }
+            guard let contentType = SearchResultsViewModel.ContentType.init(rawValue: index) else { return }
+            self.viewModel.contentType.accept(contentType)
         }).disposed(by: disposeBag)
         
         mainView.tableView.rx.itemSelected
@@ -70,17 +59,12 @@ class SearchResultsViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
-    }
-    
-    private func showArticles() {
-        viewModel.articles.bind(to: mainView.tableView.rx.items(cellIdentifier: "ArticleCell", cellType: ArticleCell.self)) { (row, article, cell) in
-            cell.textLabel?.text = article.title.value
-        }.disposed(by: disposeBag)
-    }
-    
-    private func showTopics() {
-        viewModel.topics.bind(to: mainView.tableView.rx.items(cellIdentifier: "TopicCell", cellType: TopicCell.self)) { (row, topic, cell) in
-            cell.textLabel?.text = topic.title
+        viewModel.searchResults.bind(to: mainView.tableView.rx.items(cellIdentifier: "SearchResultCell", cellType: SearchResultCell.self)) { (row, element, cell) in
+            if let article = element as? Article {
+                cell.textLabel?.text = article.title.value
+            } else if let topic = element as? Topic {
+                cell.textLabel?.text = topic.title
+            }
         }.disposed(by: disposeBag)
     }
 }

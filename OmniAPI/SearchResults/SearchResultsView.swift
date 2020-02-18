@@ -64,7 +64,7 @@ class SearchResultsView: UIView {
     }
     
     private func configureDataSource() {
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: "ArticleCell")
-        tableView.register(TopicCell.self, forCellReuseIdentifier: "TopicCell")
+        tableView.register(SearchResultCell.self, forCellReuseIdentifier: "SearchResultCell")
+        tableView.register(SearchResultCell.self, forCellReuseIdentifier: "SearchResultCell")
     }
 }

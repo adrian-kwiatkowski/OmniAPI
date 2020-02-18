@@ -1,5 +1,7 @@
 import Foundation
 
+protocol SearchResult {}
+
 // MARK: - Welcome
 struct Welcome: Codable {
     let articles: [Article]
@@ -7,7 +9,7 @@ struct Welcome: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable {
+struct Article: Codable, SearchResult {
     let title: Title
     let mainText: MainText?
     let mainResource: MainResource?
@@ -56,6 +58,6 @@ struct Title: Codable {
 }
 
 // MARK: - Topic
-struct Topic: Codable {
+struct Topic: Codable, SearchResult {
     let title, type: String
 }
