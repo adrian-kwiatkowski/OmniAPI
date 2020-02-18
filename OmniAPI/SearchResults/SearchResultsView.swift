@@ -19,8 +19,7 @@ class SearchResultsView: UIView {
     }()
     
     let tableView: UITableView = {
-        let view = UITableView(frame: .zero, style: UITableView.Style.grouped)
-        view.backgroundColor = .white
+        let view = UITableView()
         view.keyboardDismissMode = .interactive
         return view
     }()
@@ -44,6 +43,25 @@ class SearchResultsView: UIView {
         addSubview(segmentedControl)
         addSubview(tableView)
         setupConstraints()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc private func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = convert(keyboardScreenEndFrame, from: window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            tableView.contentInset = .zero
+        } else {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - safeAreaInsets.bottom, right: 0)
+        }
+
+        tableView.scrollIndicatorInsets = tableView.contentInset
     }
     
     private func setupConstraints() {
@@ -59,7 +77,7 @@ class SearchResultsView: UIView {
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(10.0)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
