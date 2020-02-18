@@ -5,7 +5,8 @@ class TopicCell: UITableViewCell {
     // MARK: - INIT
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -15,10 +16,13 @@ class TopicCell: UITableViewCell {
     // MARK: - PRIVATE METHODS
     
     private func setupUI() {
-        setupConstraints()
+        detailTextLabel?.textColor = .lightGray
     }
     
-    private func setupConstraints() {
-        
+    // MARK: - PUBLIC METHODS
+    
+    func configure(with topic: Topic) {
+        textLabel?.text = topic.title
+        detailTextLabel?.text = topic.type.capitalized
     }
 }

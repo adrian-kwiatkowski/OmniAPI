@@ -19,7 +19,8 @@ class SearchResultsView: UIView {
     }()
     
     let tableView: UITableView = {
-        let view = UITableView(frame: .zero, style: UITableView.Style.plain)
+        let view = UITableView(frame: .zero, style: UITableView.Style.grouped)
+        view.backgroundColor = .white
         view.keyboardDismissMode = .interactive
         return view
     }()
@@ -58,7 +59,7 @@ class SearchResultsView: UIView {
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.0)
+            $0.top.equalTo(segmentedControl.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
