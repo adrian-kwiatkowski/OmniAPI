@@ -43,7 +43,7 @@ class SearchResultsViewController: UIViewController {
             self.viewModel.changeContentType(contentType)
         }).disposed(by: disposeBag)
         
-        mainView.tableView.rx.itemSelected
+        mainView.tableView.rx.modelSelected(SearchResult.self)
             .subscribe(onNext:  { value in
                 print("Tapped cell: \(value)")
             })
