@@ -23,10 +23,8 @@ struct SearchResultsViewModel {
         contentType.subscribe(onNext: {
             switch $0 {
             case .articles:
-                print("articles")
                 self.searchResults.accept(self.articles.value)
             case .topics:
-                print("topics")
                 self.searchResults.accept(self.topics.value)
             }
         }).disposed(by: disposeBag)
