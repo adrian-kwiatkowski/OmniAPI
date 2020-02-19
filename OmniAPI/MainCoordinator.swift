@@ -11,4 +11,8 @@ class MainCoordinator: Coordinator {
         let viewController = SearchResultsViewController(coordinator: self)
         navigationController.pushViewController(viewController, animated: false)
     }
+    
+    func searchResultDetails(_ searchResult: SearchResult) {
+        print("\(searchResult)")
+    }
 }
