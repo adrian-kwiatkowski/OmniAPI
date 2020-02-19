@@ -7,19 +7,17 @@ class SearchResultsViewController: UIViewController {
     
     // MARK: - PRIVATE PROPERTIES
     
+    private let coordinator: Coordinator
     private let mainView: SearchResultsView
     private let viewModel: SearchResultsViewModel
     private let disposeBag = DisposeBag()
     
-    // MARK: - PUBLIC PROPERTIES
-    
-    weak var coordinator: MainCoordinator?
-    
     // MARK: - INIT
     
-    init(viewModel: SearchResultsViewModel = SearchResultsViewModel()) {
+    init(viewModel: SearchResultsViewModel = SearchResultsViewModel(), coordinator: Coordinator) {
         self.viewModel = viewModel
         self.mainView = SearchResultsView()
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         setupUI()
         bindUI()
