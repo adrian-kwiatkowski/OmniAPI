@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0B1DC423FD78CE0057156A /* TopicDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B1DC323FD78CE0057156A /* TopicDetailsView.swift */; };
+		DA0B1DC623FD78E70057156A /* ArticleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B1DC523FD78E70057156A /* ArticleDetailsView.swift */; };
 		DA17980623FD65F000A04417 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17980523FD65F000A04417 /* Coordinator.swift */; };
 		DA17980823FD661400A04417 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17980723FD661400A04417 /* MainCoordinator.swift */; };
 		DA17980A23FD712100A04417 /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17980923FD712100A04417 /* TopicDetailsViewController.swift */; };
@@ -50,6 +52,8 @@
 		2F884C682A409C98B76FBF56 /* Pods-OmniAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.release.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.release.xcconfig"; sourceTree = "<group>"; };
 		3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC96C13481C1DF3CB8DF1D3 /* Pods-OmniAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.debug.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		DA0B1DC323FD78CE0057156A /* TopicDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsView.swift; sourceTree = "<group>"; };
+		DA0B1DC523FD78E70057156A /* ArticleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsView.swift; sourceTree = "<group>"; };
 		DA17980523FD65F000A04417 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA17980723FD661400A04417 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		DA17980923FD712100A04417 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				DA17980923FD712100A04417 /* TopicDetailsViewController.swift */,
 				DA17981023FD736600A04417 /* TopicDetailsViewModel.swift */,
+				DA0B1DC323FD78CE0057156A /* TopicDetailsView.swift */,
 			);
 			path = TopicDetails;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			children = (
 				DA17980B23FD712E00A04417 /* ArticleDetailsViewController.swift */,
 				DA17981323FD738300A04417 /* ArticleDetailsViewModel.swift */,
+				DA0B1DC523FD78E70057156A /* ArticleDetailsView.swift */,
 			);
 			path = ArticleDetails;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA80233723FB0B86001DA3CB /* SearchResultsViewController.swift in Sources */,
+				DA0B1DC423FD78CE0057156A /* TopicDetailsView.swift in Sources */,
 				DA17981423FD738300A04417 /* ArticleDetailsViewModel.swift in Sources */,
 				DAB130D923FCA402002349A5 /* TopicCell.swift in Sources */,
 				DA17980A23FD712100A04417 /* TopicDetailsViewController.swift in Sources */,
@@ -445,6 +452,7 @@
 				DA17980823FD661400A04417 /* MainCoordinator.swift in Sources */,
 				DAB130DC23FCB651002349A5 /* NetworkService.swift in Sources */,
 				DAD70D5223FB2B6400913278 /* SearchResultsViewModel.swift in Sources */,
+				DA0B1DC623FD78E70057156A /* ArticleDetailsView.swift in Sources */,
 				DAD70D5423FB3F0200913278 /* SearchResultsView.swift in Sources */,
 				DAD70D4E23FB26EB00913278 /* ArticleCell.swift in Sources */,
 				DAD70D4B23FB14A600913278 /* Model.swift in Sources */,
