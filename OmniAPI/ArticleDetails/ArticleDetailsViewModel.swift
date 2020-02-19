@@ -13,8 +13,8 @@ struct ArticleDetailsViewModel {
     }
     
     var bodyText: String {
-        article.mainText.paragraphs.map {
-            $0.text.value
+        article.mainText.paragraphs.compactMap {
+            $0.text?.value
         }.joined(separator: "\n\n")
     }
     

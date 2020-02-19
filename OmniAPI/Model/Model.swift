@@ -12,13 +12,14 @@ struct Welcome: Codable {
 struct Article: Codable, SearchResult {
     let title: Title
     let mainText: MainText
-    private let mainResource: MainResource
+    private let mainResource: MainResource?
     
     var imageURL: URL? {
+        guard let mainResource = mainResource, let imageAsset = mainResource.imageAsset else { return nil }
         var components = URLComponents()
         components.scheme = "https"
         components.host = "gfx-ios.omni.se"
-        components.path = "/images/\(mainResource.imageAsset.id)"
+        components.path = "/images/\(imageAsset.id)"
         return components.url
     }
 
@@ -31,7 +32,7 @@ struct Article: Codable, SearchResult {
 
 // MARK: - MainResource
 struct MainResource: Codable {
-    let imageAsset: ImageAsset
+    let imageAsset: ImageAsset?
 
     enum CodingKeys: String, CodingKey {
         case imageAsset = "image_asset"
@@ -51,7 +52,7 @@ struct MainText: Codable {
 
 // MARK: - Paragraph
 struct Paragraph: Codable {
-    let text: Title
+    let text: Title?
     let blockType: String
 
     enum CodingKeys: String, CodingKey {
