@@ -22,6 +22,7 @@
 		DA80233F23FB0B87001DA3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA80233D23FB0B87001DA3CB /* LaunchScreen.storyboard */; };
 		DA80234A23FB0B87001DA3CB /* OmniAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80234923FB0B87001DA3CB /* OmniAPITests.swift */; };
 		DA80235523FB0B87001DA3CB /* OmniAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80235423FB0B87001DA3CB /* OmniAPIUITests.swift */; };
+		DAA6D53B23FD8A2200FB1563 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6D53A23FD8A2200FB1563 /* UIView+Extensions.swift */; };
 		DAB130D923FCA402002349A5 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB130D823FCA402002349A5 /* TopicCell.swift */; };
 		DAB130DC23FCB651002349A5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB130DB23FCB651002349A5 /* NetworkService.swift */; };
 		DAD70D4B23FB14A600913278 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD70D4A23FB14A600913278 /* Model.swift */; };
@@ -73,6 +74,7 @@
 		DA80235023FB0B87001DA3CB /* OmniAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OmniAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80235423FB0B87001DA3CB /* OmniAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniAPIUITests.swift; sourceTree = "<group>"; };
 		DA80235623FB0B87001DA3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAA6D53A23FD8A2200FB1563 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		DAB130D823FCA402002349A5 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		DAB130DB23FCB651002349A5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DAD70D4A23FB14A600913278 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD70D5723FB415300913278 /* Common */,
+				DAA6D53923FD8A0C00FB1563 /* Extensions */,
 				DA17980F23FD732100A04417 /* Navigation */,
 				DAB130DA23FCB63C002349A5 /* Networking */,
 				DAD70D5623FB413200913278 /* SearchResults */,
@@ -205,6 +208,14 @@
 				DA80235623FB0B87001DA3CB /* Info.plist */,
 			);
 			path = OmniAPIUITests;
+			sourceTree = "<group>";
+		};
+		DAA6D53923FD8A0C00FB1563 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DAA6D53A23FD8A2200FB1563 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DAB130DA23FCB63C002349A5 /* Networking */ = {
@@ -451,6 +462,7 @@
 				DA17981123FD736600A04417 /* TopicDetailsViewModel.swift in Sources */,
 				DA17980823FD661400A04417 /* MainCoordinator.swift in Sources */,
 				DAB130DC23FCB651002349A5 /* NetworkService.swift in Sources */,
+				DAA6D53B23FD8A2200FB1563 /* UIView+Extensions.swift in Sources */,
 				DAD70D5223FB2B6400913278 /* SearchResultsViewModel.swift in Sources */,
 				DA0B1DC623FD78E70057156A /* ArticleDetailsView.swift in Sources */,
 				DAD70D5423FB3F0200913278 /* SearchResultsView.swift in Sources */,

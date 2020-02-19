@@ -51,6 +51,11 @@ class SearchResultsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.tableView.rx.itemSelected
+            .subscribe(onNext: { (indexPath) in
+                self.mainView.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
+        
         mainView.searchBar.rx.text.orEmpty
             .asDriver()
             .throttle(.milliseconds(300))

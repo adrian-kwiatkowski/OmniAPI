@@ -39,9 +39,7 @@ class SearchResultsView: UIView {
     // MARK: - PRIVATE METHODS
     
     private func setupUI() {
-        addSubview(searchBar)
-        addSubview(segmentedControl)
-        addSubview(tableView)
+        addSubviews(searchBar, segmentedControl, tableView)
         setupConstraints()
         
         let notificationCenter = NotificationCenter.default

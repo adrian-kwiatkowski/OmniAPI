@@ -24,10 +24,11 @@ class TopicDetailsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubview(mainView)
+        view.addSubnode(mainView)
         
-        mainView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+        mainView.view.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

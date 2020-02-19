@@ -8,6 +8,8 @@ class ArticleCell: UITableViewCell {
     
     private let mainImageNode: ASNetworkImageNode = {
         let node = ASNetworkImageNode()
+        node.defaultImage = UIImage(named: "placeholderImage")
+        node.placeholderEnabled = true
         node.cornerRadius = 12.0
         return node
     }()
