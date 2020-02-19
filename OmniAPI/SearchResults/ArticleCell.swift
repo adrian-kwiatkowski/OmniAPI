@@ -1,13 +1,15 @@
 import UIKit
 import SnapKit
+import AsyncDisplayKit
 
 class ArticleCell: UITableViewCell {
     
     // MARK: - UI PROPERTIES
     
-    private let mainImageView: UIImageView = {
-        let view = UIImageView()
-        return view
+    private let mainImageNode: ASNetworkImageNode = {
+        let node = ASNetworkImageNode()
+        node.cornerRadius = 12.0
+        return node
     }()
     
     private let titleLabel: UILabel = {
@@ -31,21 +33,22 @@ class ArticleCell: UITableViewCell {
     // MARK: - PRIVATE METHODS
     
     private func setupUI() {
-        addSubview(mainImageView)
+        addSubnode(mainImageNode)
         addSubview(titleLabel)
         
         setupConstraints()
     }
     
     private func setupConstraints() {
-        mainImageView.snp.makeConstraints {
+        mainImageNode.view.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20.0)
             $0.leading.equalToSuperview().offset(20.0)
             $0.trailing.equalToSuperview().offset(-20.0)
+            $0.height.equalTo(160.0)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(mainImageView.snp.bottom).offset(15.0)
+            $0.top.equalTo(mainImageNode.view.snp.bottom).offset(15.0)
             $0.bottom.equalToSuperview().offset(-20.0)
             $0.leading.equalToSuperview().offset(20.0)
             $0.trailing.equalToSuperview().offset(-20.0)
@@ -55,7 +58,7 @@ class ArticleCell: UITableViewCell {
     // MARK: - PUBLIC METHODS
     
     func configure(with article: Article) {
-        mainImageView.image = UIImage(named: "test")
+        mainImageNode.url = URL(string: "https://gfx-ios.omni.se/images/\(article.mainResource.imageAsset.id)")
         titleLabel.text = article.title.value
     }
 }
