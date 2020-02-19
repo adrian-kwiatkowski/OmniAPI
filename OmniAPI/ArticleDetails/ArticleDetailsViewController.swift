@@ -2,8 +2,12 @@ import UIKit
 
 class ArticleDetailsViewController: UIViewController {
     
+    // MARK: - PRIVATE PROPERTIES
+    
     private let viewModel: ArticleDetailsViewModel
     private let mainView: ArticleDetailsView
+    
+    // MARK: - INIT
     
     init(viewModel: ArticleDetailsViewModel) {
         self.viewModel = viewModel
@@ -15,6 +19,8 @@ class ArticleDetailsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - PRIVATE METHODS
     
     private func setupUI() {
         view.backgroundColor = .white
