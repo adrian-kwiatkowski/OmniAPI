@@ -58,7 +58,7 @@ class ArticleCell: UITableViewCell {
     // MARK: - PUBLIC METHODS
     
     func configure(with article: Article) {
-        mainImageNode.url = URL(string: "https://gfx-ios.omni.se/images/\(article.mainResource.imageAsset.id)")
+        mainImageNode.url = article.imageURL
         titleLabel.text = article.title.value
     }
 }

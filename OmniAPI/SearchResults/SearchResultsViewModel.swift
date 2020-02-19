@@ -1,6 +1,5 @@
 import RxSwift
 import RxCocoa
-import PromiseKit
 
 struct SearchResultsViewModel {
     
@@ -10,6 +9,8 @@ struct SearchResultsViewModel {
     }
     
     // MARK: - PRIVATE PROPERTIES
+    
+    private let networkService: NetworkService
     
     private let contentType = BehaviorRelay<ContentType>(value: .articles)
     private let topics = BehaviorRelay<[Topic]>(value: [])
@@ -22,7 +23,8 @@ struct SearchResultsViewModel {
     
     // MARK: - INIT
     
-    init() {
+    init(networkService: NetworkService = NetworkService()) {
+        self.networkService = networkService
         bindData()
     }
     
@@ -46,7 +48,7 @@ struct SearchResultsViewModel {
     }
     
     func getSearchResults(for query: String) {
-        fetchResults(query)
+        networkService.fetchResults(query)
             .done {
                 self.topics.accept($0.topics)
                 self.articles.accept($0.articles)
@@ -63,34 +65,3 @@ struct SearchResultsViewModel {
         }
     }
 }
-
-// MARK: - Networking
-extension SearchResultsViewModel {
-    
-    enum NetworkError: Error {
-        case invalidURL
-    }
-    
-    func fetchResults(_ query: String) -> Promise<Welcome> {
-        let escapedString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
-        // https://omni-content.omni.news/search?query=stockholm
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "omni-content.omni.news"
-        components.path = "/search"
-        components.queryItems = [
-            URLQueryItem(name: "query", value: escapedString),
-        ]
-        
-        guard let url = components.url else { return Promise(error: NetworkError.invalidURL) }
-        
-        return firstly {
-            URLSession.shared.dataTask(.promise, with: url)
-        }.compactMap {
-            return try JSONDecoder().decode(Welcome.self, from: $0.data)
-        }
-    }
-}
-
-

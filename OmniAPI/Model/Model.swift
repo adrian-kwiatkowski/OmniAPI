@@ -12,7 +12,15 @@ struct Welcome: Codable {
 struct Article: Codable, SearchResult {
     let title: Title
     let mainText: MainText
-    let mainResource: MainResource
+    private let mainResource: MainResource
+    
+    var imageURL: URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "gfx-ios.omni.se"
+        components.path = "/images/\(mainResource.imageAsset.id)"
+        return components.url
+    }
 
     enum CodingKeys: String, CodingKey {
         case title
