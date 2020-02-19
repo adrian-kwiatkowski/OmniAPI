@@ -12,4 +12,5 @@ target 'OmniAPI' do
   pod 'RxCocoa', '~> 5'
   pod "PromiseKit", "~> 6.8"
   pod "Texture"
+  pod "SwiftLint"
 end

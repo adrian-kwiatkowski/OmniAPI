@@ -44,7 +44,7 @@ class SearchResultsViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         mainView.tableView.rx.modelSelected(SearchResult.self)
-            .subscribe(onNext:  { value in
+            .subscribe(onNext: { value in
                 print("Tapped cell: \(value)")
             })
             .disposed(by: disposeBag)

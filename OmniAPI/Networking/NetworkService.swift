@@ -15,7 +15,7 @@ struct NetworkService {
         components.host = "omni-content.omni.news"
         components.path = "/search"
         components.queryItems = [
-            URLQueryItem(name: "query", value: escapedString),
+            URLQueryItem(name: "query", value: escapedString)
         ]
         
         guard let url = components.url else { return Promise(error: NetworkError.invalidURL) }
