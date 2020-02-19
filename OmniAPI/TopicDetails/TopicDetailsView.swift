@@ -40,12 +40,8 @@ class TopicDetailsView: ASDisplayNode {
         super.init()
         automaticallyManagesSubnodes = true
         
-        primaryTextNode.attributedText = NSMutableAttributedString(string: primaryText, attributes: primaryTextAttributes)
+        primaryTextNode.attributedText = NSAttributedString(string: primaryText, attributes: primaryTextAttributes)
         secondaryTextNode.attributedText = NSAttributedString(string: secondaryText, attributes: secondaryTextAttributes)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - LAYOUT

@@ -11,7 +11,7 @@ class ArticleDetailsViewController: UIViewController {
     
     init(viewModel: ArticleDetailsViewModel) {
         self.viewModel = viewModel
-        mainView = ArticleDetailsView()
+        mainView = ArticleDetailsView(titleText: viewModel.titleText, imageURL: viewModel.imageURL, bodyText: viewModel.bodyText)
         super.init(nibName: nil, bundle: nil)
         setupUI()
     }
@@ -24,10 +24,11 @@ class ArticleDetailsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubview(mainView)
+        view.addSubnode(mainView)
         
-        mainView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+        mainView.view.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
