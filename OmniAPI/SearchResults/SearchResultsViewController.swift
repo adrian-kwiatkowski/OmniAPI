@@ -11,6 +11,10 @@ class SearchResultsViewController: UIViewController {
     private let viewModel: SearchResultsViewModel
     private let disposeBag = DisposeBag()
     
+    // MARK: - PUBLIC PROPERTIES
+    
+    weak var coordinator: MainCoordinator?
+    
     // MARK: - INIT
     
     init(viewModel: SearchResultsViewModel = SearchResultsViewModel()) {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA17980623FD65F000A04417 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17980523FD65F000A04417 /* Coordinator.swift */; };
+		DA17980823FD661400A04417 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17980723FD661400A04417 /* MainCoordinator.swift */; };
 		DA80233323FB0B86001DA3CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80233223FB0B86001DA3CB /* AppDelegate.swift */; };
 		DA80233523FB0B86001DA3CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80233423FB0B86001DA3CB /* SceneDelegate.swift */; };
 		DA80233723FB0B86001DA3CB /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80233623FB0B86001DA3CB /* SearchResultsViewController.swift */; };
@@ -44,6 +46,8 @@
 		2F884C682A409C98B76FBF56 /* Pods-OmniAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.release.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.release.xcconfig"; sourceTree = "<group>"; };
 		3D0FF1CF365DECC706B94FB8 /* Pods_OmniAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC96C13481C1DF3CB8DF1D3 /* Pods-OmniAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniAPI.debug.xcconfig"; path = "Target Support Files/Pods-OmniAPI/Pods-OmniAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		DA17980523FD65F000A04417 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DA17980723FD661400A04417 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		DA80232F23FB0B86001DA3CB /* OmniAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80233223FB0B86001DA3CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA80233423FB0B86001DA3CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				DAB130DA23FCB63C002349A5 /* Networking */,
 				DAD70D5623FB413200913278 /* SearchResults */,
 				DAD70D5523FB411F00913278 /* Model */,
+				DA17980523FD65F000A04417 /* Coordinator.swift */,
+				DA17980723FD661400A04417 /* MainCoordinator.swift */,
 			);
 			path = OmniAPI;
 			sourceTree = "<group>";
@@ -393,8 +399,10 @@
 			files = (
 				DA80233723FB0B86001DA3CB /* SearchResultsViewController.swift in Sources */,
 				DAB130D923FCA402002349A5 /* TopicCell.swift in Sources */,
+				DA17980623FD65F000A04417 /* Coordinator.swift in Sources */,
 				DA80233323FB0B86001DA3CB /* AppDelegate.swift in Sources */,
 				DA80233523FB0B86001DA3CB /* SceneDelegate.swift in Sources */,
+				DA17980823FD661400A04417 /* MainCoordinator.swift in Sources */,
 				DAB130DC23FCB651002349A5 /* NetworkService.swift in Sources */,
 				DAD70D5223FB2B6400913278 /* SearchResultsViewModel.swift in Sources */,
 				DAD70D5423FB3F0200913278 /* SearchResultsView.swift in Sources */,
