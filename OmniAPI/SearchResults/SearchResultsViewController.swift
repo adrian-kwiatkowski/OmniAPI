@@ -54,6 +54,7 @@ class SearchResultsViewController: UIViewController {
         mainView.tableView.rx.itemSelected
             .subscribe(onNext: { (indexPath) in
                 self.mainView.tableView.deselectRow(at: indexPath, animated: true)
+                self.mainView.searchBar.resignFirstResponder()
             }).disposed(by: disposeBag)
         
         mainView.searchBar.rx.text.orEmpty

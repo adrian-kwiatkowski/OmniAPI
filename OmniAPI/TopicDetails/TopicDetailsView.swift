@@ -17,31 +17,14 @@ class TopicDetailsView: ASDisplayNode {
         return node
     }()
     
-    // MARK: - PRIVATE PROPERTIES
-    
-    private let primaryTextAttributes: [NSAttributedString.Key: Any] = {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 31),
-            .paragraphStyle: paragraphStyle
-        ]
-        
-        return attributes
-    }()
-    private let secondaryTextAttributes = [
-        NSAttributedString.Key.foregroundColor: UIColor.lightGray,
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19)
-    ]
-    
     // MARK: - INIT
     
     init(primaryText: String, secondaryText: String) {
         super.init()
         automaticallyManagesSubnodes = true
         
-        primaryTextNode.attributedText = NSAttributedString(string: primaryText, attributes: primaryTextAttributes)
-        secondaryTextNode.attributedText = NSAttributedString(string: secondaryText, attributes: secondaryTextAttributes)
+        primaryTextNode.attributedText = NSAttributedString(string: primaryText, attributes: [.font: UIFont.systemFont(ofSize: 31)])
+        secondaryTextNode.attributedText = NSAttributedString(string: secondaryText, attributes: [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 19)])
     }
     
     // MARK: - LAYOUT

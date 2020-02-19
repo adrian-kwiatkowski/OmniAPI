@@ -10,6 +10,7 @@ class ArticleDetailsView: ASDisplayNode {
         node.automaticallyManagesSubnodes = true
         node.automaticallyManagesContentSize = true
         node.view.showsVerticalScrollIndicator = false
+        node.view.showsHorizontalScrollIndicator = false
         return node
     }()
     
@@ -37,9 +38,9 @@ class ArticleDetailsView: ASDisplayNode {
         super.init()
         automaticallyManagesSubnodes = true
         
-        titleNode.attributedText = NSAttributedString(string: titleText)
+        titleNode.attributedText = NSAttributedString(string: titleText, attributes: [.font: UIFont.boldSystemFont(ofSize: 24)])
         imageNode.url = imageURL
-        bodyNode.attributedText = NSAttributedString(string: bodyText)
+        bodyNode.attributedText = NSAttributedString(string: bodyText, attributes: [.font: UIFont.systemFont(ofSize: 16)])
     }
     
     // MARK: - LAYOUT
@@ -51,8 +52,8 @@ class ArticleDetailsView: ASDisplayNode {
                                           spacing: 20.0,
                                           justifyContent: .start,
                                           alignItems: .stretch,
-                                          children: [self.titleNode, self.imageNode, self.bodyNode])
-            
+                                          children: [self.titleNode, ASRatioLayoutSpec(ratio: 1 / 1.61, child: self.imageNode), self.bodyNode])
+        
           return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0), child: stack)
         }
         
