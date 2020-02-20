@@ -20,6 +20,7 @@ struct SearchResultsViewModel {
     // MARK: - PUBLIC PROPERTIES
     
     let searchResults = BehaviorRelay<[SearchResult]>(value: [])
+    let errorDescription = BehaviorRelay<String>(value: String())
     
     // MARK: - INIT
     
@@ -60,8 +61,7 @@ struct SearchResultsViewModel {
                 }
         }
         .catch { error in
-            // TODO: - delegate with display alert on ViewController here
-            print(error.localizedDescription)
+            self.errorDescription.accept(error.localizedDescription)
         }
     }
 }

@@ -40,6 +40,10 @@ class SearchResultsViewController: UIViewController {
     }
     
     private func bindUI() {
+        viewModel.errorDescription.subscribe(onNext: { (errorDescription) in
+            self.showError(with: errorDescription)
+        }).disposed(by: disposeBag)
+        
         mainView.segmentedControl.rx.selectedSegmentIndex.subscribe(onNext: { index in
             guard let contentType = SearchResultsViewModel.ContentType.init(rawValue: index) else { return }
             self.viewModel.changeContentType(contentType)
@@ -82,5 +86,14 @@ class SearchResultsViewController: UIViewController {
                 return UITableViewCell()
         }
         .disposed(by: disposeBag)
+    }
+}
+
+extension UIViewController {
+    
+    func showError(with text: String) {
+        let alert = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default))
+        self.present(alert, animated: true)
     }
 }
