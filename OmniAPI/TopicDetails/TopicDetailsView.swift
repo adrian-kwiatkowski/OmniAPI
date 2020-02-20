@@ -30,17 +30,13 @@ class TopicDetailsView: ASDisplayNode {
     // MARK: - LAYOUT
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let primaryCenteredSpec = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: [], child: primaryTextNode)
-        let secondaryCenteredSpec = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: [], child: secondaryTextNode)
-
-        let nameLocationStack = ASStackLayoutSpec.vertical()
-        nameLocationStack.children = [primaryCenteredSpec, secondaryCenteredSpec]
-        let headerStackSpec = ASStackLayoutSpec(direction: .vertical,
-                                                spacing: 40.0,
-                                                justifyContent: .center,
-                                                alignItems: .center,
-                                                children: [nameLocationStack])
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0), child: headerStackSpec)
+        let stack = ASStackLayoutSpec(direction: .vertical,
+                                      spacing: 0.0,
+                                      justifyContent: .center,
+                                      alignItems: .center,
+                                      children: [primaryTextNode, secondaryTextNode])
+        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0), child: stack)
     }
 }
