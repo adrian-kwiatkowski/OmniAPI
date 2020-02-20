@@ -32,9 +32,9 @@ class SearchResultsViewController: UIViewController {
     private func setupUI() {
         title = "Omni API"
         view.backgroundColor = .white
-        view.addSubview(mainView)
+        view.addSubnode(mainView)
         
-        mainView.snp.makeConstraints {
+        mainView.view.snp.makeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
     }

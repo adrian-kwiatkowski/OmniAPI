@@ -1,6 +1,7 @@
 import UIKit
+import AsyncDisplayKit
 
-class SearchResultsView: UIView {
+class SearchResultsView: ASDisplayNode {
     
     // MARK: - UI PROPERTIES
     
@@ -26,8 +27,8 @@ class SearchResultsView: UIView {
     
     // MARK: - INIT
     
-    init() {
-        super.init(frame: .zero)
+    override init() {
+        super.init()
         setupUI()
         configureDataSource()
     }
@@ -39,7 +40,7 @@ class SearchResultsView: UIView {
     // MARK: - PRIVATE METHODS
     
     private func setupUI() {
-        addSubviews(searchBar, segmentedControl, tableView)
+        view.addSubviews(searchBar, segmentedControl, tableView)
         setupConstraints()
         
         let notificationCenter = NotificationCenter.default
@@ -51,7 +52,7 @@ class SearchResultsView: UIView {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = convert(keyboardScreenEndFrame, from: window)
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
         if notification.name == UIResponder.keyboardWillHideNotification {
             tableView.contentInset = .zero
@@ -64,7 +65,7 @@ class SearchResultsView: UIView {
     
     private func setupConstraints() {
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
         }
         
