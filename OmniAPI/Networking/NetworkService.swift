@@ -11,7 +11,7 @@ struct NetworkService {
         let escapedString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         var components = URLComponents()
-        components.scheme = "https"
+        components.scheme = "http"
         components.host = "omni-content.omni.news"
         components.path = "/search"
         components.queryItems = [

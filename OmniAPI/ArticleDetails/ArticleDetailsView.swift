@@ -47,7 +47,7 @@ class ArticleDetailsView: ASDisplayNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        scrollNode.layoutSpecBlock = { node, constrainedSize in
+        scrollNode.layoutSpecBlock = { [unowned self] node, constrainedSize in
             let stack = ASStackLayoutSpec(direction: .vertical,
                                           spacing: 20.0,
                                           justifyContent: .start,

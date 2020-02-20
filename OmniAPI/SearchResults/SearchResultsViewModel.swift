@@ -15,7 +15,7 @@ struct SearchResultsViewModel {
     private let contentType = BehaviorRelay<ContentType>(value: .articles)
     private let topics = BehaviorRelay<[Topic]>(value: [])
     private let articles = BehaviorRelay<[Article]>(value: [])
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - PUBLIC PROPERTIES
     

@@ -10,12 +10,13 @@ class SearchResultsViewController: UIViewController {
     private let coordinator: Coordinator
     private let mainView: SearchResultsView
     private let viewModel: SearchResultsViewModel
-    private let disposeBag = DisposeBag()
+    private let disposeBag: DisposeBag
     
     // MARK: - INIT
     
     init(viewModel: SearchResultsViewModel = SearchResultsViewModel(), coordinator: Coordinator) {
         self.viewModel = viewModel
+        self.disposeBag = viewModel.disposeBag
         self.mainView = SearchResultsView()
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -40,34 +41,35 @@ class SearchResultsViewController: UIViewController {
     }
     
     private func bindUI() {
-        viewModel.errorDescription.subscribe(onNext: { (errorDescription) in
-            self.showError(with: errorDescription)
-        }).disposed(by: disposeBag)
+        viewModel.errorDescription
+            .subscribe(onNext: { [weak self] (errorDescription) in
+                self?.coordinator.showError(with: errorDescription)
+            }).disposed(by: disposeBag)
         
-        mainView.segmentedControl.rx.selectedSegmentIndex.subscribe(onNext: { index in
-            guard let contentType = SearchResultsViewModel.ContentType.init(rawValue: index) else { return }
-            self.viewModel.changeContentType(contentType)
-        }).disposed(by: disposeBag)
+        mainView.segmentedControl.rx.selectedSegmentIndex
+            .subscribe(onNext: { [weak self] index in
+                guard let contentType = SearchResultsViewModel.ContentType.init(rawValue: index) else { return }
+                self?.viewModel.changeContentType(contentType)
+            }).disposed(by: disposeBag)
         
         mainView.tableView.rx.modelSelected(SearchResult.self)
-            .subscribe(onNext: { value in
-                self.coordinator.searchResultDetails(value)
-            })
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] value in
+                self?.coordinator.searchResultDetails(value)
+            }).disposed(by: disposeBag)
         
         mainView.tableView.rx.itemSelected
-            .subscribe(onNext: { (indexPath) in
-                self.mainView.tableView.deselectRow(at: indexPath, animated: true)
-                self.mainView.searchBar.resignFirstResponder()
+            .subscribe(onNext: { [weak self] (indexPath) in
+                self?.mainView.tableView.deselectRow(at: indexPath, animated: true)
+                self?.mainView.searchBar.resignFirstResponder()
             }).disposed(by: disposeBag)
         
         mainView.searchBar.rx.text.orEmpty
             .asDriver()
             .throttle(.milliseconds(300))
             .distinctUntilChanged()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] in
                 if $0.count >= 3 {
-                    self.viewModel.getSearchResults(for: $0)
+                    self?.viewModel.getSearchResults(for: $0)
                 }
             }).disposed(by: disposeBag)
         
@@ -84,16 +86,6 @@ class SearchResultsViewController: UIViewController {
                 }
                 
                 return UITableViewCell()
-        }
-        .disposed(by: disposeBag)
-    }
-}
-
-extension UIViewController {
-    
-    func showError(with text: String) {
-        let alert = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default))
-        self.present(alert, animated: true)
+        }.disposed(by: disposeBag)
     }
 }

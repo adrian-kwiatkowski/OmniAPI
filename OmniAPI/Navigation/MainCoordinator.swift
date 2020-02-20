@@ -23,4 +23,10 @@ class MainCoordinator: Coordinator {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
+    
+    func showError(with text: String) {
+        let alert = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default))
+        navigationController.present(alert, animated: true)
+    }
 }

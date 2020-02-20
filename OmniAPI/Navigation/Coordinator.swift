@@ -5,4 +5,5 @@ protocol Coordinator: AnyObject {
     
     func start()
     func searchResultDetails(_ searchResult: SearchResult)
+    func showError(with text: String)
 }
